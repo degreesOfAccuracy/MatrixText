@@ -8,7 +8,7 @@ Simply use `git clone` to download the code into your current directory.
 
 You might need to download git, refer to https://github.com/git-guides/install-git.
 
-## Dependancies
+## Dependencies
 This code requires the python library `curses`, which is not installed by default on Windows.
 If you are on Windows, run `pip install windows-curses` to get it.
 
