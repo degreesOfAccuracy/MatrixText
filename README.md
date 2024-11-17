@@ -1,2 +1,2 @@
 # MatrixText
-A fun library to draw stylised text
+A fun program to draw stylised text
