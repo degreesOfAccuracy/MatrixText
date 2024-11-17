@@ -60,14 +60,12 @@ def main(stdscr):
 
     while True:
         stdscr.erase()
+        height, width = stdscr.getmaxyx()
+        font.generate_matrix_text(height, width)
         if time.time() < starting_time + 10:
-            height, width = stdscr.getmaxyx()
-            font.generate_matrix_text(height, width)
             font.addmatrixstr(stdscr, 0, 0, "Before we begin I have")
             font.addmatrixstr(stdscr, 8, 0, "one question...")
         else:
-            height, width = stdscr.getmaxyx()
-            font.generate_matrix_text(height, width)
             font.addmatrixstr(stdscr, 0, 0, "Why so serious??")
         stdscr.refresh()
         time.sleep(0.1)
