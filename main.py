@@ -48,10 +48,12 @@ class Font:
     def addmatrixstr(self, stdscr, start_y, start_x, text):
         for x, character in enumerate(self.matrixify_text(start_y, start_x, text)):
             for y, line in enumerate(character):
-                stdscr.addstr(start_y + y, start_x + x * self.character_width, line)
+                stdscr.addstr(start_y + y, start_x + x * self.character_width, line, curses.color_pair(1))
 
 def main(stdscr):
     curses.curs_set(False)
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
 
     font = Font("letters.txt", 7, " abcdefghijklmnopqrstuvwxyz0123456789?.")
     starting_time = time.time()
