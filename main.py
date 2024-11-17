@@ -28,7 +28,7 @@ class Font:
             self.scroll_rates = []
             for x in range(width):
                 self.matrix_text.append(random.choices(special_characters, k = height))
-                self.scroll_rates.append(random.uniform(0.4, 0.8))
+                self.scroll_rates.append(random.uniform(0.2, 0.6))
 
     def matrixify_text(self, start_y, start_x, text):
         matrixified_text = []
@@ -48,7 +48,7 @@ class Font:
     def addmatrixstr(self, stdscr, start_y, start_x, text):
         for x, character in enumerate(self.matrixify_text(start_y, start_x, text)):
             for y, line in enumerate(character):
-                stdscr.addstr(y, x * self.character_width, line)
+                stdscr.addstr(start_y + y, start_x + x * self.character_width, line)
 
 def main(stdscr):
     curses.curs_set(False)
@@ -61,12 +61,12 @@ def main(stdscr):
         if time.time() < starting_time + 10:
             height, width = stdscr.getmaxyx()
             font.generate_matrix_text(height, width)
-            font.addmatrixstr(0, 0, "Before we begin I have")
-            font.addmatrixstr(8, 0, "one question...")
+            font.addmatrixstr(stdscr, 0, 0, "Before we begin I have")
+            font.addmatrixstr(stdscr, 8, 0, "one question...")
         else:
             height, width = stdscr.getmaxyx()
             font.generate_matrix_text(height, width)
-            font.addmatrixstr(0, 0, "Why so serious??")
+            font.addmatrixstr(stdscr, 0, 0, "Why so serious??")
         stdscr.refresh()
         time.sleep(0.1)
 
